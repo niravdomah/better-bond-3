@@ -256,14 +256,15 @@ If agent returns with proposed revisions:
 Current epic: [N], Current story: [M]
 Story file: [path from state]
 
-This phase is fully autonomous. Handle everything internally.
+This phase requires user approval before proceeding.
 
-Launch test-designer:
-"Design test scenarios for Epic [N], Story [M]. Story file: [path]. Produce a specification-by-example document for BA review and downstream test generation."
+Launch test-designer Call A:
+"This is Call A — Design test scenarios for Epic [N], Story [M]. Story file: [path]. Produce a specification-by-example document. Return the test design summary. Do NOT write any files. Do NOT commit. Do NOT use AskUserQuestion."
 
 After it returns:
 - Fire dashboard update
-- Proceed directly to WRITE-TESTS (execute the WRITE-TESTS instructions below)
+- Return with "NEEDS_APPROVAL:" followed by the test design summary (scenario groups, key scenarios, any BA decisions needed)
+- Only proceed to WRITE-TESTS after user approves
 ```
 
 ---
